@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}用户管理{% endblock %}
+{% block navbar %}
+<section class="content-header">
+    <h1>用户管理</h1>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-dashboard"></i> 当前位置</li>
+        <li class="active">用户管理</li>
+        <li class="active">用户管理</li>
+    </ol>
+</section>
+{% endblock %}
+
+{% block content %}
+<div class="box box-primary">
+    <div class="box-header with-border">
+        {% include 'message.html' %}
+    </div>
+
+    <div class="box-body">
+        {% if form%}
+        <table class="table table-bordered">
+            <tr>
+                <th>ID</th>
+                <th>用户名</th>
+                <th>真实姓名</th>
+                <th>邮箱</th>
+                <th>电话</th>
+                <th>状态</th>
+                <th>编辑</th>
+            </tr>
+            {% for row in form.content %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{row.username}}</td>
+                <td>{{row.fullname}}</td>
+                <td>{{row.email}}</td>
+                <td>{{row.phone}}</td>
+                <td>
+                    <input id="status" name="status" type="checkbox"  value={{row.status}}>
+                </td>
+                <td><a class='fa fa-lg fa-edit text-light-blue'
+                       href='{{ url_for("main.edit_user", id=row.id) }}'></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+
+    <div class="box-footer clearfix">
+        {% if form%}
+        <ul class="pagination pagination-sm no-margin pull-right">
+            <li><a href="#">&laquo;</a></li>
+            {% for i in range(1, form.total_page+ 1) %}
+            {% if i == form.page %}
+            <li><a href="?page={{i}}"><b>{{i}}</b></a></li>
+            {% else %}
+            <li><a href="?page={{i}}">{{i}}</a></li>
+            {% endif %}
+            {% endfor %}
+            <li><a href="#">&raquo;</a></li>
+        </ul>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function initPage() {
+
+        $('[name=status]').bootstrapSwitch({
+            state: $('#status').val(),
+            onText: '生效',
+            offText: '失效'
+
+        });
+
+        $('.status').bootstrapSwitch();
+        $(".status").on("switchChange.bootstrapSwitch", function (event, state) {
+            switchStatus($(this).data("id"), state, this);
+        });
+    }
+    function switchStatus(id, status, switchBox) {
+        restTemplate("PUT", "/notifies/" + id + "/status/" + status, null, function () {
+            $($(switchBox)).bootstrapSwitch("state", status);
+        });
+    }
+</script>
+{% endblock %}

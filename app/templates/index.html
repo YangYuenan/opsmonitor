@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}首页{% endblock %}
+
+{% block navbar %}
+<section class="content-header">
+    <h1>首页</h1>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-dashboard"></i> 当前位置</li>
+        <li class="active">首页</li>
+    </ol>
+</section>
+{% endblock %}
+
+{% block content %}
+<div class="box box-primary">
+    <div class="box-body">
+        <div class="row">
+            <div class="col-lg-4 col-xs-6">
+                <div class="small-box bg-aqua">
+                    <div class="inner">
+                        <h3 id="count01">0</h3>
+                        <p>监控主机数量</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-desktop" style="font-size: 80px;"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-xs-6">
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3 id="count02">0</h3>
+                        <p>监控项数量</p>
+                    </div>
+                    <div class="icon">
+                        <i class="glyphicon glyphicon-th-list" style="font-size: 80px;"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-xs-6">
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3 id="count03">0</h3>
+                        <p>异常监控项数量</p>
+                    </div>
+                    <div class="icon">
+                        <i class="layui-icon layui-icon-face-cry" style="font-size: 80px;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-bg-gray" style="padding: 30px;">
+      <div class="layui-row layui-col-space15">
+        <div class="layui-col-md6">
+          <div class="layui-card">
+            <div class="layui-card-header">一周内主机异常数量趋势</div>
+            <div id="host-trend" class="layui-card-body">
+                {{myecharts|safe}}
+            </div>
+          </div>
+        </div>
+        <div class="layui-col-md6">
+          <div class="layui-card">
+            <div class="layui-card-header">一周内监控项异常数量趋势</div>
+            <div id="item-trend" class="layui-card-body">
+              {{myecharts|safe}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function initPage() {
+        var jsInObj = null;
+        restTemplate("GET", "/stats/summary", jsInObj, function (jsOutObj) {
+            $("#count01").text(jsOutObj.host_count);
+            $("#count02").text(jsOutObj.item_count);
+            $("#count03").text(jsOutObj.danger_count);
+        });
+        host_pyecharts();
+        item_pyecharts();
+    }
+
+    //提交模态框数据
+    function item_pyecharts() {
+        $.ajax({
+            type: "GET",
+            url: "/api/item/warning",
+            success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    $('#item-trend').html(result.myecharts)
+                },
+                error : function() {
+                    alert("异常！");
+                }
+        });
+    }
+    function host_pyecharts() {
+        $.ajax({
+            type: "GET",
+            url: "/api/host/warning",
+            success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    $('#host-trend').html(result.myecharts)
+                },
+                error : function() {
+                    alert("异常！");
+                }
+        });
+    }
+</script>
+{% endblock %}
