@@ -1,5 +1,5 @@
 #!/bin/bash
-source /opt/opsmonitor/venv/bin/activate
+source ./venv/bin/activate
 ################################################
 case $1 in
     "manage")  nohup python3 ./manage.py runserver 2>&1 &

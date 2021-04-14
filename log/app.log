@@ -1,0 +1,85 @@
+2021-04-13 22:01:41,523 _internal.py werkzeug     INFO      * Restarting with stat
+2021-04-13 22:01:42,064 _internal.py werkzeug     WARNING   * Debugger is active!
+2021-04-13 22:01:42,070 _internal.py werkzeug     INFO      * Debugger PIN: 298-570-373
+2021-04-13 22:01:42,076 _internal.py werkzeug     INFO      * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2021-04-13 22:01:46,297 pool.py peewee.pool  DEBUG    No connection available in pool.
+2021-04-13 22:01:46,983 pool.py peewee.pool  DEBUG    Created new connection 2708255148808.
+2021-04-13 22:01:47,004 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`username`, `t1`.`password_hash`, `t1`.`fullname`, `t1`.`email`, `t1`.`phone`, `t1`.`status` FROM `user` AS `t1` WHERE (`t1`.`id` = %s) LIMIT %s OFFSET %s', [1, 1, 0])
+2021-04-13 22:01:47,191 peewee.py peewee       DEBUG    ('SELECT COUNT(1) FROM (SELECT 1 FROM `monitoritem` AS `t1` INNER JOIN `hostinfo` AS `t2` ON (`t1`.`host_id` = `t2`.`id`)) AS `_wrapped`', [])
+2021-04-13 22:01:47,357 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`host_id`, `t1`.`item_name`, `t1`.`item_type`, `t1`.`warning_value`, `t1`.`tcp_http`, `t1`.`matching_char`, `t1`.`check_time`, `t1`.`item_detail`, `t1`.`item_status`, `t1`.`status`, `t2`.`id`, `t2`.`host_name`, `t2`.`host_ip`, `t2`.`host_port`, `t2`.`host_user`, `t2`.`host_password_base64` FROM `monitoritem` AS `t1` INNER JOIN `hostinfo` AS `t2` ON (`t1`.`host_id` = `t2`.`id`) LIMIT %s OFFSET %s', [10, 0])
+2021-04-13 22:01:47,612 pool.py peewee.pool  DEBUG    Returning 2708255148808 to pool.
+2021-04-13 22:01:47,613 _internal.py werkzeug     INFO     127.0.0.1 - - [13/Apr/2021 22:01:47] "[37mGET /querystatus HTTP/1.1[0m" 200 -
+2021-04-13 22:01:51,115 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`username`, `t1`.`password_hash`, `t1`.`fullname`, `t1`.`email`, `t1`.`phone`, `t1`.`status` FROM `user` AS `t1` WHERE (`t1`.`id` = %s) LIMIT %s OFFSET %s', [1, 1, 0])
+2021-04-13 22:01:51,306 pool.py peewee.pool  DEBUG    Returning 2708255148808 to pool.
+2021-04-13 22:01:51,307 _internal.py werkzeug     INFO     127.0.0.1 - - [13/Apr/2021 22:01:51] "[37mGET /index HTTP/1.1[0m" 200 -
+2021-04-13 22:01:51,661 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`username`, `t1`.`password_hash`, `t1`.`fullname`, `t1`.`email`, `t1`.`phone`, `t1`.`status` FROM `user` AS `t1` WHERE (`t1`.`id` = %s) LIMIT %s OFFSET %s', [1, 1, 0])
+2021-04-13 22:01:51,661 pool.py peewee.pool  DEBUG    No connection available in pool.
+2021-04-13 22:01:51,840 peewee.py peewee       DEBUG    ('SELECT COUNT(1) FROM (SELECT 1 FROM `hostinfo` AS `t1`) AS `_wrapped`', [])
+2021-04-13 22:01:52,045 peewee.py peewee       DEBUG    ('SELECT COUNT(1) FROM (SELECT 1 FROM `monitoritem` AS `t1`) AS `_wrapped`', [])
+2021-04-13 22:01:52,233 peewee.py peewee       DEBUG    ('SELECT COUNT(1) FROM (SELECT 1 FROM `monitoritem` AS `t1` WHERE (`t1`.`item_status` = %s)) AS `_wrapped`', [False])
+2021-04-13 22:01:52,308 pool.py peewee.pool  DEBUG    Created new connection 2708256014024.
+2021-04-13 22:01:52,312 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`username`, `t1`.`password_hash`, `t1`.`fullname`, `t1`.`email`, `t1`.`phone`, `t1`.`status` FROM `user` AS `t1` WHERE (`t1`.`id` = %s) LIMIT %s OFFSET %s', [1, 1, 0])
+2021-04-13 22:01:52,313 pool.py peewee.pool  DEBUG    No connection available in pool.
+2021-04-13 22:01:52,906 pool.py peewee.pool  DEBUG    Created new connection 2708256259848.
+2021-04-13 22:01:52,907 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`username`, `t1`.`password_hash`, `t1`.`fullname`, `t1`.`email`, `t1`.`phone`, `t1`.`status` FROM `user` AS `t1` WHERE (`t1`.`id` = %s) LIMIT %s OFFSET %s', [1, 1, 0])
+2021-04-13 22:01:52,907 pool.py peewee.pool  DEBUG    Returning 2708255148808 to pool.
+2021-04-13 22:01:52,908 _internal.py werkzeug     INFO     127.0.0.1 - - [13/Apr/2021 22:01:52] "[37mGET /api/stats/summary HTTP/1.1[0m" 200 -
+2021-04-13 22:01:52,908 pool.py peewee.pool  DEBUG    Returning 2708256014024 to pool.
+2021-04-13 22:01:52,938 _internal.py werkzeug     INFO     127.0.0.1 - - [13/Apr/2021 22:01:52] "[37mGET /api/host/warning HTTP/1.1[0m" 200 -
+2021-04-13 22:01:53,272 pool.py peewee.pool  DEBUG    Returning 2708256259848 to pool.
+2021-04-13 22:01:53,278 _internal.py werkzeug     INFO     127.0.0.1 - - [13/Apr/2021 22:01:53] "[37mGET /api/item/warning HTTP/1.1[0m" 200 -
+2021-04-13 22:01:55,936 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`username`, `t1`.`password_hash`, `t1`.`fullname`, `t1`.`email`, `t1`.`phone`, `t1`.`status` FROM `user` AS `t1` WHERE (`t1`.`id` = %s) LIMIT %s OFFSET %s', [1, 1, 0])
+2021-04-13 22:01:56,107 pool.py peewee.pool  DEBUG    Returning 2708255148808 to pool.
+2021-04-13 22:01:56,107 _internal.py werkzeug     INFO     127.0.0.1 - - [13/Apr/2021 22:01:56] "[37mGET /index HTTP/1.1[0m" 200 -
+2021-04-13 22:01:56,340 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`username`, `t1`.`password_hash`, `t1`.`fullname`, `t1`.`email`, `t1`.`phone`, `t1`.`status` FROM `user` AS `t1` WHERE (`t1`.`id` = %s) LIMIT %s OFFSET %s', [1, 1, 0])
+2021-04-13 22:01:56,458 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`username`, `t1`.`password_hash`, `t1`.`fullname`, `t1`.`email`, `t1`.`phone`, `t1`.`status` FROM `user` AS `t1` WHERE (`t1`.`id` = %s) LIMIT %s OFFSET %s', [1, 1, 0])
+2021-04-13 22:01:56,510 peewee.py peewee       DEBUG    ('SELECT COUNT(1) FROM (SELECT 1 FROM `hostinfo` AS `t1`) AS `_wrapped`', [])
+2021-04-13 22:01:56,575 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`username`, `t1`.`password_hash`, `t1`.`fullname`, `t1`.`email`, `t1`.`phone`, `t1`.`status` FROM `user` AS `t1` WHERE (`t1`.`id` = %s) LIMIT %s OFFSET %s', [1, 1, 0])
+2021-04-13 22:01:56,726 peewee.py peewee       DEBUG    ('SELECT COUNT(1) FROM (SELECT 1 FROM `monitoritem` AS `t1`) AS `_wrapped`', [])
+2021-04-13 22:01:56,729 pool.py peewee.pool  DEBUG    No connection available in pool.
+2021-04-13 22:01:56,966 peewee.py peewee       DEBUG    ('SELECT COUNT(1) FROM (SELECT 1 FROM `monitoritem` AS `t1` WHERE (`t1`.`item_status` = %s)) AS `_wrapped`', [False])
+2021-04-13 22:01:57,181 pool.py peewee.pool  DEBUG    Created new connection 2708256719496.
+2021-04-13 22:01:57,183 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`username`, `t1`.`password_hash`, `t1`.`fullname`, `t1`.`email`, `t1`.`phone`, `t1`.`status` FROM `user` AS `t1` WHERE (`t1`.`id` = %s) LIMIT %s OFFSET %s', [1, 1, 0])
+2021-04-13 22:01:57,183 pool.py peewee.pool  DEBUG    Returning 2708256014024 to pool.
+2021-04-13 22:01:57,184 _internal.py werkzeug     INFO     127.0.0.1 - - [13/Apr/2021 22:01:57] "[37mGET /api/host/warning HTTP/1.1[0m" 200 -
+2021-04-13 22:01:57,184 pool.py peewee.pool  DEBUG    Returning 2708256259848 to pool.
+2021-04-13 22:01:57,187 pool.py peewee.pool  DEBUG    Returning 2708255148808 to pool.
+2021-04-13 22:01:57,187 _internal.py werkzeug     INFO     127.0.0.1 - - [13/Apr/2021 22:01:57] "[37mGET /api/item/warning HTTP/1.1[0m" 200 -
+2021-04-13 22:01:57,188 _internal.py werkzeug     INFO     127.0.0.1 - - [13/Apr/2021 22:01:57] "[37mGET /api/stats/summary HTTP/1.1[0m" 200 -
+2021-04-13 22:01:57,318 pool.py peewee.pool  DEBUG    Returning 2708256719496 to pool.
+2021-04-13 22:01:57,318 _internal.py werkzeug     INFO     127.0.0.1 - - [13/Apr/2021 22:01:57] "[37mGET /index HTTP/1.1[0m" 200 -
+2021-04-13 22:01:57,648 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`username`, `t1`.`password_hash`, `t1`.`fullname`, `t1`.`email`, `t1`.`phone`, `t1`.`status` FROM `user` AS `t1` WHERE (`t1`.`id` = %s) LIMIT %s OFFSET %s', [1, 1, 0])
+2021-04-13 22:01:57,780 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`username`, `t1`.`password_hash`, `t1`.`fullname`, `t1`.`email`, `t1`.`phone`, `t1`.`status` FROM `user` AS `t1` WHERE (`t1`.`id` = %s) LIMIT %s OFFSET %s', [1, 1, 0])
+2021-04-13 22:01:57,828 peewee.py peewee       DEBUG    ('SELECT COUNT(1) FROM (SELECT 1 FROM `hostinfo` AS `t1`) AS `_wrapped`', [])
+2021-04-13 22:01:57,898 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`username`, `t1`.`password_hash`, `t1`.`fullname`, `t1`.`email`, `t1`.`phone`, `t1`.`status` FROM `user` AS `t1` WHERE (`t1`.`id` = %s) LIMIT %s OFFSET %s', [1, 1, 0])
+2021-04-13 22:01:57,965 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`username`, `t1`.`password_hash`, `t1`.`fullname`, `t1`.`email`, `t1`.`phone`, `t1`.`status` FROM `user` AS `t1` WHERE (`t1`.`id` = %s) LIMIT %s OFFSET %s', [1, 1, 0])
+2021-04-13 22:01:58,001 peewee.py peewee       DEBUG    ('SELECT COUNT(1) FROM (SELECT 1 FROM `monitoritem` AS `t1`) AS `_wrapped`', [])
+2021-04-13 22:01:58,115 pool.py peewee.pool  DEBUG    Returning 2708256719496 to pool.
+2021-04-13 22:01:58,116 _internal.py werkzeug     INFO     127.0.0.1 - - [13/Apr/2021 22:01:58] "[37mGET /index HTTP/1.1[0m" 200 -
+2021-04-13 22:01:58,144 pool.py peewee.pool  DEBUG    Returning 2708256014024 to pool.
+2021-04-13 22:01:58,159 _internal.py werkzeug     INFO     127.0.0.1 - - [13/Apr/2021 22:01:58] "[37mGET /api/host/warning HTTP/1.1[0m" 200 -
+2021-04-13 22:01:58,170 peewee.py peewee       DEBUG    ('SELECT COUNT(1) FROM (SELECT 1 FROM `monitoritem` AS `t1` WHERE (`t1`.`item_status` = %s)) AS `_wrapped`', [False])
+2021-04-13 22:01:58,239 pool.py peewee.pool  DEBUG    Returning 2708256259848 to pool.
+2021-04-13 22:01:58,243 _internal.py werkzeug     INFO     127.0.0.1 - - [13/Apr/2021 22:01:58] "[37mGET /api/item/warning HTTP/1.1[0m" 200 -
+2021-04-13 22:01:58,342 pool.py peewee.pool  DEBUG    Returning 2708255148808 to pool.
+2021-04-13 22:01:58,343 _internal.py werkzeug     INFO     127.0.0.1 - - [13/Apr/2021 22:01:58] "[37mGET /api/stats/summary HTTP/1.1[0m" 200 -
+2021-04-13 22:01:58,550 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`username`, `t1`.`password_hash`, `t1`.`fullname`, `t1`.`email`, `t1`.`phone`, `t1`.`status` FROM `user` AS `t1` WHERE (`t1`.`id` = %s) LIMIT %s OFFSET %s', [1, 1, 0])
+2021-04-13 22:01:58,673 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`username`, `t1`.`password_hash`, `t1`.`fullname`, `t1`.`email`, `t1`.`phone`, `t1`.`status` FROM `user` AS `t1` WHERE (`t1`.`id` = %s) LIMIT %s OFFSET %s', [1, 1, 0])
+2021-04-13 22:01:58,724 peewee.py peewee       DEBUG    ('SELECT COUNT(1) FROM (SELECT 1 FROM `hostinfo` AS `t1`) AS `_wrapped`', [])
+2021-04-13 22:01:58,797 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`username`, `t1`.`password_hash`, `t1`.`fullname`, `t1`.`email`, `t1`.`phone`, `t1`.`status` FROM `user` AS `t1` WHERE (`t1`.`id` = %s) LIMIT %s OFFSET %s', [1, 1, 0])
+2021-04-13 22:01:58,896 peewee.py peewee       DEBUG    ('SELECT COUNT(1) FROM (SELECT 1 FROM `monitoritem` AS `t1`) AS `_wrapped`', [])
+2021-04-13 22:01:59,030 pool.py peewee.pool  DEBUG    Returning 2708256014024 to pool.
+2021-04-13 22:01:59,037 _internal.py werkzeug     INFO     127.0.0.1 - - [13/Apr/2021 22:01:59] "[37mGET /api/host/warning HTTP/1.1[0m" 200 -
+2021-04-13 22:01:59,067 peewee.py peewee       DEBUG    ('SELECT COUNT(1) FROM (SELECT 1 FROM `monitoritem` AS `t1` WHERE (`t1`.`item_status` = %s)) AS `_wrapped`', [False])
+2021-04-13 22:01:59,135 pool.py peewee.pool  DEBUG    Returning 2708256259848 to pool.
+2021-04-13 22:01:59,139 _internal.py werkzeug     INFO     127.0.0.1 - - [13/Apr/2021 22:01:59] "[37mGET /api/item/warning HTTP/1.1[0m" 200 -
+2021-04-13 22:01:59,247 pool.py peewee.pool  DEBUG    Returning 2708255148808 to pool.
+2021-04-13 22:01:59,247 _internal.py werkzeug     INFO     127.0.0.1 - - [13/Apr/2021 22:01:59] "[37mGET /api/stats/summary HTTP/1.1[0m" 200 -
+2021-04-13 22:02:05,471 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`username`, `t1`.`password_hash`, `t1`.`fullname`, `t1`.`email`, `t1`.`phone`, `t1`.`status` FROM `user` AS `t1` WHERE (`t1`.`id` = %s) LIMIT %s OFFSET %s', [1, 1, 0])
+2021-04-13 22:02:05,655 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`host_name`, `t1`.`host_ip`, `t1`.`host_port`, `t1`.`host_user`, `t1`.`host_password_base64` FROM `hostinfo` AS `t1`', [])
+2021-04-13 22:02:05,834 pool.py peewee.pool  DEBUG    Returning 2708255148808 to pool.
+2021-04-13 22:02:05,835 _internal.py werkzeug     INFO     127.0.0.1 - - [13/Apr/2021 22:02:05] "[37mGET /addmonitor HTTP/1.1[0m" 200 -
+2021-04-13 22:02:18,784 peewee.py peewee       DEBUG    ('SELECT `t1`.`id`, `t1`.`username`, `t1`.`password_hash`, `t1`.`fullname`, `t1`.`email`, `t1`.`phone`, `t1`.`status` FROM `user` AS `t1` WHERE (`t1`.`id` = %s) LIMIT %s OFFSET %s', [1, 1, 0])
+2021-04-13 22:02:18,987 peewee.py peewee       DEBUG    ('SELECT `t1`.`item_name`, `t1`.`check_time`, `t1`.`item_detail` FROM `itemstatus` AS `t1` WHERE (((`t1`.`item_id` = %s) AND (`t1`.`check_time` <= %s)) AND (`t1`.`check_time` >= %s)) ORDER BY `t1`.`check_time` ASC', [4, ' 2021/04/13 23:59:59', '2021/04/11 '])
+2021-04-13 22:02:19,324 pool.py peewee.pool  DEBUG    Returning 2708255148808 to pool.
+2021-04-13 22:02:19,324 _internal.py werkzeug     INFO     127.0.0.1 - - [13/Apr/2021 22:02:19] "[37mPOST /api/pyecharts HTTP/1.1[0m" 200 -
