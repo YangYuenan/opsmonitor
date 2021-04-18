@@ -119,7 +119,7 @@ class ItemStatus(BaseModel):
 
     class Meta:
         indexes = (
-            (('item_id', 'check_time'), False),
+            (('id', 'item_id', 'item_name', 'item_detail', 'check_time'), False),
         )
 
 

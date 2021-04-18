@@ -60,7 +60,7 @@ CREATE TABLE `itemstatus`  (
   `item_detail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `warning_status` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `idx_item_id_check_time`(`item_id`, `check_time`) USING BTREE
+  INDEX `idx_item_check_time`(`id`, `item_id`, `item_name`, `item_detail`, `check_time`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 
