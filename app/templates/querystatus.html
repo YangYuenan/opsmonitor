@@ -52,12 +52,12 @@
                            data-size="mini">
                     {% endif %}
                 </td>
-                <td><a class="fa fa-bar-chart text-info" data-toggle="modal" data-target="#{{row.host_name}}-{{row.item_name}}"></a></td>
+                <td><a class="fa fa-bar-chart text-info" data-toggle="modal" data-target="#modal{{row.id}}"></a></td>
                 <td><a class='fa fa-lg fa-edit text-light-blue' href='{{ url_for("main.fix_monitor", id=row.id) }}'></a></td>
                 <td><a class='fa fa-lg fa-trash text-red' href='?action=del&id={{row.id}}'></a></td>
             </tr>
             <!-- 模态框（Modal） -->
-            <div class="modal fade" id="{{row.host_name}}-{{row.item_name}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modal{{row.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
