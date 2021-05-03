@@ -64,26 +64,3 @@
     </form>
 </div>
 {% endblock %}
-
-{% block scripts %}
-<script>
-    function initPage() {
-        slide_value = $(".slider").val() == "" ? 50 : parseInt($(".slider").val());
-        $(".slider").slider({
-            id: "blue",
-            max: 100,
-            value: slide_value
-        });
-
-        switch_value = $('#status')[0].checked
-        $('#status').bootstrapSwitch({
-            state: switch_value,
-            onText: '生效',
-            offText: '失效'
-
-        });
-
-        $(".select2").select2();
-    }
-</script>
-{% endblock %}

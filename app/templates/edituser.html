@@ -73,25 +73,5 @@
 {% endblock %}
 
 {% block scripts %}
-<script>
-    function initPage() {
-        slide_value = $(".slider").val() == "" ? 5 : parseInt($(".slider").val());
-        $(".slider").slider({
-            id: "blue",
-            min: 1,
-            max: 10,
-            value: slide_value
-        });
-
-        switch_value = $('#status')[0].checked
-        $('#status').bootstrapSwitch({
-            state: switch_value,
-            onText: '生效',
-            offText: '失效'
-
-        });
-
-        $(".select2").select2();
-    }
-</script>
+<script src="{{ url_for('static', filename='js/edituser.js') }}"></script>
 {% endblock %}
