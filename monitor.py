@@ -9,7 +9,7 @@ from time import sleep
 from peewee import fn
 from app import get_logger
 from app.utils import SFTP, telnet, mail, dict_to_str, query_to_list, str_to_dict
-from app.models import HostInfo, ItemStatus, MonitorItem, CfgNotify, GlobalCfg
+from app.models import HostInfo, ItemStatus, MonitorItem, CfgNotify, GlobalCfg, db
 from conf.config import config
 
 logger = get_logger(__name__)
@@ -28,7 +28,17 @@ ABNORMAL_STATUS = {
 LAST_NET_INFO = {}
 
 
+def auto_manager_db(func):
+    def wrapper(*args, **kwargs):
+        db.connect()
+        result = func(*args, **kwargs)
+        db.close()
+        return result
+    return wrapper
+
+
 # 获取配置
+@auto_manager_db
 def get_cfg(is_warning=False):
     if is_warning:
         warning_user = query_to_list(CfgNotify.select().where(CfgNotify.status == 1).dicts())
@@ -172,6 +182,7 @@ ITEM_DICT = {
 
 
 # 保存检查结果
+@auto_manager_db
 def save_result(item, inspect_info):
     assert isinstance(item, dict)
     assert isinstance(inspect_info, bytes)
@@ -274,7 +285,8 @@ def inspect(inspect_item, conf):
                 host_name=item['host_name'], item_name=item['item_name'],
                 item_detail=item_detail['monitor_item_detail'], inspect_time=datetime.now())
             warning_item_list.append(warning_str)
-        logger.info(item_detail)
+        log = {item['host_name']: item_detail}
+        logger.info(log)
     if warning_item_list:
         notice(warning_item_list, conf)
 
