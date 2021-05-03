@@ -5,7 +5,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'super-secret'
-    DB_HOST = 'v2ray.ynyang.top'
+    DB_HOST = '127.0.0.1'
     DB_PORT = 33306
     DB_USER = 'opsmonitor'
     DB_PASSWD = 'opsmonitor'
