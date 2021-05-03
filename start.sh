@@ -2,7 +2,7 @@
 source ./venv/bin/activate
 ################################################
 case $1 in
-    "manage")  nohup python3 ./manage.py runserver --threaded 2>&1 &
+    "manage")  setsid python3 ./manage.py runserver --threaded 2>&1 &
     ;;
     "monitor")  python3 ./monitor.py 2>&1 &
     ;;
@@ -10,7 +10,7 @@ case $1 in
     ;;
     "--help") echo 'Used: ./start.sh (manage|monitor|all|-h|--help)'
     ;;
-    *)  nohup python3 ./manage.py runserver --threaded 2>&1 &
+    *)  setsid python3 ./manage.py runserver --threaded 2>&1 &
         python3 ./monitor.py 2>&1 &
     ;;
 esac
