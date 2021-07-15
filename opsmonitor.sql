@@ -68,22 +68,23 @@ CREATE TABLE `itemstatus`  (
 -- Table structure for monitoritem
 -- ----------------------------
 DROP TABLE IF EXISTS `monitoritem`;
-CREATE TABLE `monitoritem`  (
+CREATE TABLE `monitoritem` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `host_id` int(11) NOT NULL,
-  `item_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `item_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `item_name` varchar(255) NOT NULL,
+  `item_type` varchar(255) NOT NULL,
   `warning_value` smallint(6) NOT NULL,
-  `tcp_http` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0',
-  `matching_char` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `check_time` datetime NULL DEFAULT NULL,
-  `item_detail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `item_status` tinyint(1) NULL DEFAULT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `monitoritem_host_id`(`host_id`) USING BTREE,
-  CONSTRAINT `monitoritem_hostinfo_id` FOREIGN KEY (`host_id`) REFERENCES `hostinfo` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+  `tcp_http` varchar(255) NOT NULL DEFAULT '0',
+  `matching_char` varchar(255) NOT NULL,
+  `notify_user` varchar(255) DEFAULT NULL,
+  `check_time` datetime DEFAULT NULL,
+  `item_detail` varchar(255) DEFAULT NULL,
+  `item_status` tinyint(1) DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `monitoritem_host_id` (`host_id`),
+  CONSTRAINT `monitoritem_hostinfo_id` FOREIGN KEY (`host_id`) REFERENCES `hostinfo` (`id`)
+) ENGINE=InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 
 -- ----------------------------

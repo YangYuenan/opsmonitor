@@ -245,22 +245,24 @@ def daemonize():
 
 
 # 通知报警
-def notice(warning_item_list, conf):
-    if warning_item_list:
+def notice(warning_str, notify_user, conf):
+    if warning_str:
         mail_list = []
         phone_list = []
         warning_user_list = get_cfg(is_warning=True)
         if warning_user_list and conf.get('id'):
+            notify = notify_user.split('|')
             for user in warning_user_list:
-                if user['notify_type'] == 'MAIL':
-                    mail_list.append(user['notify_number'])
-                elif user['notify_type'] == 'SMS':
-                    phone_list.append(user['notify_number'])
+                if notify[0] == 'all' or user['notify_name'] in notify:
+                    if user['notify_type'] == 'MAIL':
+                        mail_list.append(user['notify_number'])
+                    elif user['notify_type'] == 'SMS':
+                        phone_list.append(user['notify_number'])
             if mail_list:
                 mail(smtpServer=conf['smtp_server'], smtpPort=conf['smtp_port'],loginUser=conf['smtp_user'],
                      loginPassword=str(base64.b64decode(conf['smtp_password_base64']), encoding='utf-8'),
                      mailFrom=conf['smtp_user'], mailTo=';'.join(mail_list), mailReceivers=mail_list,
-                     mailSubject='opsmonitor监控报警', mailText=''.join(warning_item_list))
+                     mailSubject='opsmonitor监控报警', mailText=warning_str)
                 logger.info('邮件已发送给{mail_to}'.format(mail_to=';'.join(mail_list)))
 
 
@@ -268,7 +270,6 @@ def notice(warning_item_list, conf):
 def inspect(inspect_item, conf):
     host_name = None
     inspect_info = None
-    warning_item_list = []
     for item in inspect_item:
         if not item['host_name'] == host_name:
             ssh = SFTP(ip=item['host_ip'], port=item['host_port'], user=item['host_user'],
@@ -284,11 +285,9 @@ def inspect(inspect_item, conf):
             warning_str = '主机:{host_name}\n监控项：{item_name}异常\n详细信息：{item_detail}\n时间：{inspect_time}\n\n\n'.format(
                 host_name=item['host_name'], item_name=item['item_name'],
                 item_detail=item_detail['monitor_item_detail'], inspect_time=datetime.now())
-            warning_item_list.append(warning_str)
+            notice(warning_str, item['notify_user'], conf)
         log = {item['host_name']: item_detail}
         logger.info(log)
-    if warning_item_list:
-        notice(warning_item_list, conf)
 
 
 def main():
