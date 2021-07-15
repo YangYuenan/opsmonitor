@@ -8,7 +8,7 @@ from flask_login import login_user, logout_user, login_required
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    print(form.rememberme.data)
+    # print(form.rememberme.data)
     if form.validate_on_submit():
         try:
             user = User.get(User.username == form.username.data)

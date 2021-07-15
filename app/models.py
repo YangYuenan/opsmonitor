@@ -99,6 +99,7 @@ class MonitorItem(BaseModel):
     warning_value = SmallIntegerField(default=0)  # 监控项的报警阈值（tcp服务此项为0）
     tcp_http = CharField(default=0)  # tcp服务端口或http服务检查地址（除tcp和http服务外此项为0）
     matching_char = CharField(default=0)  # http服务需要比对返回的字符串，以验证服务的可用性（除http服务外的其他监控项，此项值为0）
+    notify_user = CharField(default='all')  # 检查项报警联系人，默认所有联系人
     check_time = DateTimeField()  # 监控项更改信息时间
     item_detail = CharField()  # 监控项的检查结果
     item_status = BooleanField(default=True)  # 监控项最新状态（默认正常）

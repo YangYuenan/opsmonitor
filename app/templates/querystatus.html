@@ -69,6 +69,7 @@
                             </h4>
                         </div>
                         <div class="modal-body">
+                            <span class="col-md-12 text-info">{{row.item_name}}报警联系人：{{row.notify_user}}</span>
                             {% if row.item_status == 1 %}
                             <span class="col-md-12 text-info">{{row.item_name}}当前状态：{{row.item_detail}}</span>
                             {% else %}

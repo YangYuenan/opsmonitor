@@ -61,6 +61,7 @@ class MonitorItemForm(FlaskForm):
     warning_value = IntegerField('报警阈值(cpu、内存、硬盘为使用率，网络为传输速率 KB/s)', validators=[Length(0, 5, message='长度不正确')], default=0)
     tcp_http = StringField('tcp和http配置(tcp服务填端口号，http服务填连接地址,其余不填)', default=0)
     matching_char = StringField('比对字符串(http服务需填，其余不填)', validators=[Length(0, 255, message='长度不正确')], default=0)
+    notify_user = StringField('报警联系人(多个联系人以"|"分开，此处填写联系人姓名，all代表所有联系人)', validators=[Length(0, 255, message='长度不正确')], default='all')
     status = BooleanField('启用标识', default=True)
     submit = SubmitField('提交')
 
@@ -84,6 +85,8 @@ class FixMonitorItemForm(FlaskForm):
     item_type = StringField('项目类型', validators=[DataRequired(message='请选择监控项')])
     warning_value = IntegerField('报警阈值(cpu、内存、硬盘为使用率，网络为传输速率 KB/s)', validators=[NumberRange(0, 10240, message='请输入0-10000之间的数值')], default=0)
     matching_char = StringField('比对字符串', validators=[Length(0, 255, message='长度不正确')], default=0)
+    notify_user = StringField('报警联系人(多个联系人以"|"分开，此处填写联系人姓名，all代表所有联系人)', validators=[Length(0, 255, message='长度不正确')],
+                              default='all')
     submit = SubmitField('提交')
 
 
